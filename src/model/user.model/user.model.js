@@ -3,6 +3,10 @@ const bcryptjs = require("bcryptjs");
 
 const userModel = new mongoose.Schema({
   username: String,
+  firstName: String,
+  lastName: String,
+  contact: String,
+  address: String,
   email: {
     type: String,
     required: [true, "Please enter your email"],
@@ -22,12 +26,11 @@ const userModel = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  point: {
-    type: Number,
-    default: 1000
+  amount: {
+    type: Number
   },
   googleId: { type: String },
-  image: { type: String, default: "https://cdn-icons-png.flaticon.com/512/560/560277.png" },
+  profile: { type: String },
   resetToken: String,
   isVerifed: {
     type: Boolean,

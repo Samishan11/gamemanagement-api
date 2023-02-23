@@ -16,12 +16,15 @@ const sportModel = new mongoose.Schema({
                 user: {
                     type: String
                 },
+                league: {
+                    type: String
+                },
                 team: {
                     type: String
                 },
                 role: {
                     type: String
-                }
+                },
             }
         }
     ],

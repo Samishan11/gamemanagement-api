@@ -3,15 +3,16 @@ const userModel = require('../../model/user.model/user.model');
 const { StatusCodes } = require("http-status-codes");
 
 const Register = async (req, res) => {
-    let { username, phone, email, password, checkpassword } = req.body;
+    let { username, contact, email, amount, password, checkpassword } = req.body;
     userModel.findOne({ email: email }).then((data) => {
         if (data === null) {
             if (password === checkpassword){
                    bcrypt.hash(password , 10 , (e, has_password)=>{
                     new userModel({
                         username,
-                        phone,
+                        contact,
                         email,
+                        amount,
                         password: has_password,
                         createdOn: new Date().toDateString()
                     }).save().then(() => {

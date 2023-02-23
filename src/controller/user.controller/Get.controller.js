@@ -4,7 +4,8 @@ const { StatusCodes } = require("http-status-codes");
 const GetUser = async (req, res) => {
     try {
         if (!req.userInfo?.isAdmin) {
-            return res.status(StatusCodes.UNAUTHORIZED).send("unauthorized");
+            const _res = await userModel.findOne({_id:req?.userInfo?._id});
+            return res.status(StatusCodes.ACCEPTED).send(_res);
         }
         const _res = await userModel.find();
         return res.status(StatusCodes.ACCEPTED).send(_res);
